@@ -6,7 +6,7 @@ import numpy as np
 from scraper import scrapeAccount
 
 
-df = pd.read_csv("DataSet.csv")
+df = pd.read_csv("./resources/DataSet.csv")
 X = df.iloc[:, 0:11].values
 y = df[['Fake']]
 
