@@ -34,7 +34,7 @@ ACCOUNT, TYPING_REPLY = range(2)
 
 
 def start(update, context):
-
+    print("--------- BOT ONLINE ----------")
     update.message.reply_text(
         'Hi! My name is Instagram Fake Detector Bot.\n\n'
         'I will help you to discover if a Instagram account is fake or not. '
@@ -54,12 +54,19 @@ def account(update, context):
         time = 'afternoon'
     else:
         time = 'nightly'
-    update.message.reply_text(
-        'Mhhh, {} is the one you chose...\n\n'
-        'This seems to be a {} one to me! '
-        'I\'m quite sure it is. 😉 It was fun, send me another one! '
-        'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), getPrediction(result), time))
-
+    if(result != None):
+        update.message.reply_text(
+            'Mhhh, {} is the one you chose...\n\n'
+            'This seems to be a {} one to me! '
+            'I\'m quite sure it is. 😉 It was fun, send me another one! '
+            'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), getPrediction(result), time))
+    else:
+        update.message.reply_text(
+            'Mhhh, {} is the one you chose...\n\n'
+            'Have you wrote it right? 🤔 '
+            'This user doesn\'t exist! But don\'t worry, retry! '
+            'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), time))
+    
     return ACCOUNT
 
 def cancel(update, context):
