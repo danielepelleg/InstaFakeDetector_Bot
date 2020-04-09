@@ -6,6 +6,7 @@
 First, a few callback functions are defined. Then, those functions are passed to
 the Dispatcher and registered at their respective places.
 Then, the bot is started and runs until we press Ctrl-C on the command line.
+
 Usage:
 Example of a bot-user conversation using ConversationHandler.
 Send /start to initiate the conversation.
@@ -14,7 +15,6 @@ bot.
 """
 
 import logging
-import os
 
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
@@ -22,8 +22,7 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
 
 import datetime
 
-TOKEN = os.getenv("TELEGRAM_TOKEN")
-#from utility import readToken
+from utility import readToken
 from detector import predict, getPrediction, getProbability
 
 # Enable logging
@@ -32,21 +31,21 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-ACCOUNT, TYPING_REPLY = range(2)
-
+ACCOUNT = range(1)
 
 def start(update, context):
-    print("--------- BOT ONLINE ----------")
     update.message.reply_text(
         'Hi! My name is Instagram Fake Detector Bot.\n\n'
         'I will help you to discover if a Instagram account is fake or not. '
-        'Just send me the username of the account you want to verify, and I will give you the answer you search!\n\n'
+        'Just send me the username of the account you want to verify, and I will give you the answer you search!\n\n')
         
-        'Anytime, send /cancel to stop talking to me.\n\n')
+        #'Anytime, send /cancel to stop talking to me.\n\n')
+
     return ACCOUNT
 
 
 def account(update, context):
+    user = update.message.from_user
     text = update.message.text
     result = predict(text)
     currentTime = datetime.datetime.utcnow()+datetime.timedelta(hours=1)
@@ -94,20 +93,19 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater(TOKEN, use_context=True)
+    updater = Updater(readToken(), use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
 
-    # Add conversation handler with the states GENDER, PHOTO, LOCATION and BIO
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start)],
+        entry_points = [CommandHandler('start', start)],
 
         states={
             ACCOUNT : [MessageHandler(Filters.text, account)]
         },
 
-        fallbacks=[CommandHandler('cancel', cancel)]
+        fallbacks = [CommandHandler('cancel', cancel)]
     )
 
     dp.add_handler(conv_handler)
