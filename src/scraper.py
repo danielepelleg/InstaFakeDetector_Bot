@@ -121,7 +121,7 @@ def scrapeDefault(account):
     details[0].append(str(account.follows_count))
     following = account.follows_count
 
-    time.sleep(random.randrange(1,4))
+    time.sleep(random.randrange(1,3))
 
     print('Dictionary:-\t', details)
     print('Dictionary Length: -\t', len(details[0]))
@@ -194,7 +194,7 @@ def scrapeOpen(account):
     # Following
     details[0].append(str(account.follows_count))
 
-    time.sleep(random.randrange(1,4))
+    time.sleep(random.randrange(1,3))
 
     # Last Post Recent
     if mediaCount == '0':
@@ -206,8 +206,9 @@ def scrapeOpen(account):
         else:
             details[0].append('0')
 
-    time.sleep(random.randrange(1,4))
     medias = instagram.get_medias(account.username, 100)
+
+    time.sleep(random.randrange(1,3))
 
     # %Post Single Day (Day with the max of post on the total of posts)
     if mediaCount == '0':
@@ -242,8 +243,6 @@ def scrapeOpen(account):
             total_likes += media.likes_count
         average_likes = total_likes/len(medias)        
         details[0].append(str(round(average_likes,3)))
-
-    time.sleep(random.randrange(1, 4))
 
     print('Dictionary:-\t', details)
     print('Dictionary Length: -\t', len(details[0]))

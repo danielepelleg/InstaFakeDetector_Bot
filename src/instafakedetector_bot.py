@@ -14,6 +14,7 @@ bot.
 """
 
 import logging
+import os
 
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
@@ -21,7 +22,8 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
 
 import datetime
 
-from utility import readToken
+TOKEN = os.getenv("TELEGRAM_TOKEN")
+#from utility import readToken
 from detector import predict, getPrediction, getProbability
 
 # Enable logging
@@ -38,9 +40,9 @@ def start(update, context):
     update.message.reply_text(
         'Hi! My name is Instagram Fake Detector Bot.\n\n'
         'I will help you to discover if a Instagram account is fake or not. '
-        'Just send me the username of the account you want to verify, and I will give you the answer you search and how much I\'m sure about that!\n\n'
+        'Just send me the username of the account you want to verify, and I will give you the answer you search!\n\n'
         
-        'At any time, send /cancel to stop talking to me.\n\n')
+        'Anytime, send /cancel to stop talking to me.\n\n')
     return ACCOUNT
 
 
@@ -55,11 +57,16 @@ def account(update, context):
     else:
         time = 'nightly'
     if(result != None):
+        prediction = getPrediction(result)
+        if (prediction == "real"):
+            emote = '✅'
+        elif (prediction == "fake"):
+            emote = '❌'
         update.message.reply_text(
             'Mhhh, {} is the one you chose...\n\n'
-            'This seems to be a {} one to me! '
-            'I\'m quite sure it is. 😉 It was fun, send me another one! '
-            'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), getPrediction(result), time))
+            'This seems to be a {} {} one to me!\n'
+            'I\'m quite sure it is. 😉\nIt was fun, send me another one!\n'
+            'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), prediction.upper(), emote, time))
     else:
         update.message.reply_text(
             'Mhhh, {} is the one you chose...\n\n'
@@ -83,10 +90,11 @@ def error(update, context):
 
 
 def main():
+    logger.info("Starting bot")
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater(readToken(), use_context=True)
+    updater = Updater(TOKEN, use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
