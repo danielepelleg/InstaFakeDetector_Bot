@@ -37,48 +37,53 @@ def start(update, context):
     update.message.reply_text(
         'Hi! My name is Instagram Fake Detector Bot.\n\n'
         'I will help you to discover if a Instagram account is fake or not. '
-        'Just send me the username of the account you want to verify, and I will give you the answer you search!\n\n')
-        
-        #'Anytime, send /cancel to stop talking to me.\n\n')
+        'Just send me the username of the account you want to verify, and I will give you the answer you search!\n'
+        'Anytime, send /cancel to stop talking to me.\n\n')
 
     return ACCOUNT
 
 
 def account(update, context):
-    user = update.message.from_user
-    text = update.message.text
-    result = predict(text)
-    currentTime = datetime.datetime.utcnow()+datetime.timedelta(hours=1)
-    if 5 < currentTime.hour < 12:
-        time = 'morning'
-    elif 12 <= currentTime.hour < 18:
-        time = 'afternoon'
+    if update.message.text == '/cancel':
+        return cancel(update,context)
+    elif update.message.text == '/start':
+        update.message.reply_text('The bot is already active, send me the username of the account you want to verify...')
+        return ACCOUNT
     else:
-        time = 'nightly'
-    if(result != None):
-        prediction = getPrediction(result)
-        if (prediction == "real"):
-            emote = '✅'
-        elif (prediction == "fake"):
-            emote = '❌'
-        update.message.reply_text(
-            'Mhhh, {} is the one you chose...\n\n'
-            'This seems to be a {} {} one to me!\n'
-            'I\'m quite sure it is. 😉\nIt was fun, send me another one!\n'
-            'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), prediction.upper(), emote, time))
-    else:
-        update.message.reply_text(
-            'Mhhh, {} is the one you chose...\n\n'
-            'Have you wrote it right? 🤔 '
-            'This user doesn\'t exist! But don\'t worry, retry! '
-            'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), time))
+        text = update.message.text
+        result = predict(text)
+        currentTime = datetime.datetime.utcnow()+datetime.timedelta(hours=1)
+        if 5 < currentTime.hour < 12:
+            time = 'morning'
+        elif 12 <= currentTime.hour < 18:
+            time = 'afternoon'
+        else:
+            time = 'nightly'
+        if(result != None):
+            prediction = getPrediction(result)
+            if (prediction == "real"):
+                emote = '✅'
+            elif (prediction == "fake"):
+                emote = '❌'
+            update.message.reply_text(
+                'Mhhh, {} is the one you chose...\n\n'
+                'This seems to be a {} {} one to me!\n'
+                'I\'m quite sure it is. 😉\nIt was fun, send me another one!\n'
+                'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), prediction.upper(), emote, time))
+        else:
+            update.message.reply_text(
+                'Mhhh, {} is the one you chose...\n\n'
+                'Have you wrote it right? 🤔 '
+                'This user doesn\'t exist! But don\'t worry, retry! '
+                'I\'m always up for some {} training! 👨‍💻'.format(text.lower(), time))
+        return ACCOUNT
     
-    return ACCOUNT
+    
 
 def cancel(update, context):
     user = update.message.from_user
     logger.info("User %s canceled the conversation.", user.first_name)
-    update.message.reply_text('Bye! I hope we can talk again some day.')
+    update.message.reply_text('Bye! I hope we can talk again some day.',reply_markup=ReplyKeyboardRemove())
 
     return ConversationHandler.END
 
