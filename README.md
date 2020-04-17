@@ -1,8 +1,8 @@
 # InstaFakeDetector_Bot
 <!-- PROJECT LOGO -->
   
-  [![telegram-bot](https://img.shields.io/static/v1?label=Telegram.Bot&message=InstaFakeDetector_Bot&color=blue)]()
-  [![python](https://img.shields.io/static/v1?label=python&message=3.7&color=yellow)]()
+  ![telegram-bot](https://img.shields.io/static/v1?label=Telegram.Bot&message=InstaFakeDetector_Bot&color=blue)
+  ![python](https://img.shields.io/static/v1?label=python&message=3.7&color=yellow)
 
   [![license](https://img.shields.io/static/v1?label=License&message=GPL&color=green)](https://github.com/danielepelleg/InstaFakeDetector_Bot/blob/master/LICENSE)
   
@@ -22,15 +22,15 @@
   <!-- TABLE OF CONTENTS -->
   ## 📚 Table of Contents
   
-  - [Table of Contents](#table-of-contents)
-  - [About The Project](#about-the-project)
-  - [Getting Started](#getting-started)
+  - [Table of Contents](#📚-table-of-contents)
+  - [About The Project](#🤖-about-the-project)
+  - [Getting Started](#🔨-getting-started)
     - [Token](#token)
     - [Installation](#installation) 
     - [Updates](#updates)
-  - [Screenshots](#screenshots)
-  - [License](#license)
-  - [Contributors](#contributors)
+  - [Screenshots](#📱-screenshots)
+  - [License](#🔑-license)
+  - [Contributors](#👨‍🎓👨‍🎓-contributors)
    
    <!-- ABOUT THE PROJECT -->
    ## 🤖 About The Project
@@ -63,6 +63,12 @@
    
    ### Updates
    Pull this repository for updates.
+
+   <!-- SCREENSHOTS -->
+   ## 📱 SCREENSHOTS
+   Bot Info             |  Real Account             |  Fake Account
+   :-------------------------:|:-------------------------:|:-------------------------:
+   <img src="resources/screenshots/screen1.png" alt="botPage">  |  <img src="resources/screenshots/screen2.png" alt="screen2">  |  <img src="resources/screenshots/screen3.png" alt="screen3">
    
    <!-- LICENSE -->
    ## 🔑 LICENSE
@@ -70,14 +76,8 @@
    
    Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
    
-   <!-- SCREENSHOTS -->
-   ## 📱 SCREENSHOTS
-   Bot Info             |  Real Account             |  Fake Account
-   :-------------------------:|:-------------------------:|:-------------------------:
-   <img src="resources/screenshots/screen1.png" alt="botPage">  |  <img src="resources/screenshots/screen2.png" alt="screen2">  |  <img src="resources/screenshots/screen3.png" alt="screen3">
-   
    <!-- CONTRIBUTORS -->
-   ## CONTRIBUTORS
+   ## 👨‍🎓👨‍🎓 CONTRIBUTORS
    [Daniele Pellegrini](https://github.com/danielepelleg) - 285240
    
    [Riccardo Fava](https://github.com/BeleRicks11) - 287516
