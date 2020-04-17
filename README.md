@@ -1,8 +1,8 @@
 # InstaFakeDetector_Bot
 <!-- PROJECT LOGO -->
   
-  ![telegram-bot](https://img.shields.io/static/v1?label=Telegram.Bot&message=InstaFakeDetector_Bot&color=blue)
-  ![python](https://img.shields.io/static/v1?label=python&message=3.7&color=yellow)
+  [![telegram-bot](https://img.shields.io/static/v1?label=Telegram.Bot&message=InstaFakeDetector_Bot&color=blue)]()
+  [![python](https://img.shields.io/static/v1?label=python&message=3.7&color=yellow)]()
 
   [![license](https://img.shields.io/static/v1?label=License&message=GPL&color=green)](https://github.com/danielepelleg/InstaFakeDetector_Bot/blob/master/LICENSE)
   
