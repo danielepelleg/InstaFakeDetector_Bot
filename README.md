@@ -22,15 +22,15 @@
   <!-- TABLE OF CONTENTS -->
   ## 📚 Table of Contents
   
-  - [Table of Contents](#📚-table-of-contents)
-  - [About The Project](#🤖-about-the-project)
-  - [Getting Started](#🔨-getting-started)
+  - [Table of Contents](#-table-of-contents)
+  - [About The Project](#-about-the-project)
+  - [Getting Started](#-getting-started)
     - [Token](#token)
     - [Installation](#installation) 
     - [Updates](#updates)
-  - [Screenshots](#📱-screenshots)
-  - [License](#🔑-license)
-  - [Contributors](#👨‍🎓👨‍🎓-contributors)
+  - [Screenshots](#-screenshots)
+  - [License](#-license)
+  - [Contributors](#-contributors)
    
    <!-- ABOUT THE PROJECT -->
    ## 🤖 About The Project
