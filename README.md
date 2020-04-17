@@ -74,7 +74,7 @@
    ## 📱 SCREENSHOTS
    Bot Info             |  Real Account             |  Fake Account
    :-------------------------:|:-------------------------:|:-------------------------:
-   <img src="resources/screenshots/screen1.png" alt="botPage" width="360" height="600">  |  <img src="resources/screenshots/screen2.png" alt="screen2" width="360" height="600">  |  <img src="resources/screenshots/screen3.png" alt="screen3" width="360" height="600">
+   <img src="resources/screenshots/screen1.png" alt="botPage">  |  <img src="resources/screenshots/screen2.png" alt="screen2">  |  <img src="resources/screenshots/screen3.png" alt="screen3">
    
    <!-- CONTRIBUTORS -->
    ## CONTRIBUTORS
